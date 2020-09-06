@@ -5,13 +5,30 @@ namespace Anagram
 {
     public class AnagramSelector
     {
-        public bool WordPairIsAnagram(string word1, string word2) {
-            //Insert the correct implementation here
-            return false;
+        public bool GivenStringPairThenCheckIsAnagram(string str1, string str2) {
+            int noOfCharsInWord1 = str1.Length;
+            int noOfCharsInWord2 = str2.Length;
+            if (noOfCharsInWord1 != noOfCharsInWord2)
+                return false;
+            str1 = SortInputString(str1);
+            str2 = SortInputString(str2);
+            for (int index = 0; index < noOfCharsInWord1; index++)
+                if (str1[index] != str2[index])return false;
+            return true;
         }
-        public List<string> SelectAnagrams(string word, List<string> candidates) {
-            //Insert the correct implementation here
-            return candidates;
+        public static string SortInputString(string s){
+            char[] charTypeArrayOfInputString = s.ToCharArray();
+            Array.Sort(charTypeArrayOfInputString);
+            return new string(charTypeArrayOfInputString);
+        }
+        public List<string> GivenListStringThenSelectAnagrams(string word, List<string> candidates) {
+            List<string> listOfStringWhichAreAnagramWithGivenWord = new List<string>();
+            for (int index = 0; index < candidates.Count; index++) {
+                if (GivenStringPairThenCheckIsAnagram(word, candidates[index])) {
+                    listOfStringWhichAreAnagramWithGivenWord.Add(candidates[index]);
+                }
+            }
+            return listOfStringWhichAreAnagramWithGivenWord;
         }
     }
 }
