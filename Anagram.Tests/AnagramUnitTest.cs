@@ -11,23 +11,23 @@ namespace Anagram.Tests
         [Fact]
         public void ReturnTrueForGivenAnagramPair()
         {
-            AnagramSelector selector = new AnagramSelector();
-            Assert.True(selector.GivenStringPairThenCheckIsAnagram("restful", "fluster"));
-            Assert.True(selector.GivenStringPairThenCheckIsAnagram("forty five", "over fifty"));
-            Assert.True(selector.GivenStringPairThenCheckIsAnagram("",""));
+            AnagramPairChecker selector = new AnagramPairChecker();
+            Assert.True(selector.WordPairIsAnagram("restful", "fluster"));
+            Assert.True(selector.WordPairIsAnagram("forty five", "over fifty"));
+            Assert.True(selector.WordPairIsAnagram("",""));
         }
         [Fact]
         public void ReturnFalseForGivenAnag()
         {
-            AnagramSelector selector = new AnagramSelector();
-            Assert.False(selector.GivenStringPairThenCheckIsAnagram("something", "else"));
-            Assert.False(selector.GivenStringPairThenCheckIsAnagram("","iAmNotEmpty"));
+            AnagramPairChecker selector = new AnagramPairChecker();
+            Assert.False(selector.WordPairIsAnagram("something", "else"));
+            Assert.False(selector.WordPairIsAnagram("","iAmNotEmpty"));
         }
         [Fact]
         public void TestForSelectsAnagramsOfAWordIsCorrectOrNot()
         {
             AnagramSelector selector = new AnagramSelector();
-            var selection = selector.GivenListStringThenSelectAnagrams("master",new List<string>{"stream", "something", "maters"});
+            var selection = selector.SelectAnagrams("master",new List<string>{"stream", "something", "maters"});
             Assert.True(selection.SequenceEqual(new List<string>{"stream", "maters"}));
         }
     }
